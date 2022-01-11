@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="./mycontroller.js"></script>
+    <style>
+        tr, th, td {
+            border-style: solid;
+            border-radius: 1px;
+            border-color: black;
+        }
+            </style>
+</head>
+<body style="background: linear-gradient(to right, #ffafbd,  #ffc3a0);">
+    <div ng-app="myApp" ng-controller="nameCtrl">
+        Search:
+        <input type="text" ng-model="check">
+        <table>
+            <tr>
+                <th ng-click="orderByMe('provinceState')">Provice State</th>
+                <th ng-click="orderByMe('countryRegion')">countryRegion</th>
+                <th ng-click="orderByMe('lastUpdate')">lastUpdate</th>
+                <th ng-click="orderByMe('lat')">Lattitude</th>
+                <th ng-click="orderByMe('long')">Longitude</th>
+                <th ng-click="orderByMe('confirmed')">Conformed</th>
+                <th ng-click="orderByMe('recovered')">Recovered</th>
+                <th ng-click="orderByMe('deaths')">Deaths</th>
+                <th ng-click="orderByMe('cases28Days')">Cases in last 28 Days</th>
+                <th ng-click="orderByMe('deaths28Days')">Deaths in last 28 Days</th>
+            </tr>
+            <tr ng-repeat="item in items | filter: check | orderBy:myOrderBy">
+                <td >{{item.provinceState}}</td>
+                <td>{{item.countryRegion}}</td>
+                <td>{{item.lastUpdate}}</td>
+                <td>{{item.lat}}</td>
+                <td>{{item.long}}</td>
+                <td>{{item.confirmed}}</td>
+                <td>{{item.recovered}}</td>
+                <td>{{item.deaths}}</td>
+                <td>{{item.cases28Days}}</td>
+                <td>{{item.deaths28Days}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
